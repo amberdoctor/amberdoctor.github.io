@@ -1,0 +1,57 @@
+#body {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+	background-color:#blue;
+	font-family: 'Lucida Sans Typewriter', 'Courier New', monospace;
+}
+
+#phil, #amber, #and {
+	display:inline-block;
+	font-size: 50px;
+	padding:10px;
+}
+
+#phil {
+	text-align: right;
+	width:20%;
+}
+
+#amber {
+	text-align: left;
+	width:20%;
+}
+
+#menu {
+    background:grey;
+    width:100%;
+    text-align:center;
+}
+
+#menu > div {
+	color:white;
+	padding:15px 20px;
+	display:inline-block;
+}
+#code_output {
+	width:100%;
+}
+
+#code_output > div {
+	display:inline-block;
+	text-align:left;
+	vertical-align: top;
+	width:40%;
+}
+
+#code {
+	color:white;
+	background:black;
+}
+
+#output {
+	color:black;
+	background:red;
+	width:;
+}

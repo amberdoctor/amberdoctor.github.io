@@ -21,5 +21,5 @@
     (node [:span
            (title-template)
            (menu-template data/languages target-content-id)
-           [:div {:id target-content-id} "hi"]
+           [:div {:id target-content-id} "welcome"]
            [:div {:id "footer"}]])))
