@@ -1,7 +1,9 @@
 (ns phil-and-amber.language-templates
-  (:require [dommy.core :refer [replace-contents! attr set-html!]])
+  (:require [dommy.core :refer [replace-contents! attr set-html!]]
+            [clojure.set :as cljset]
+            [clojure.string :as cljstring])
   (:require-macros [dommy.macros :refer [node sel1]]
-                   [phil-and-amber.macros :refer [raw-html-template raw-python-template]]))
+                   [phil-and-amber.macros :refer [raw-html-template raw-python-template raw-java-template raw-js-template lang-template]]))
 
 (defn str-to-id
   "Converts between string and keyword for ID because
@@ -21,30 +23,54 @@
         new-match (into {} (vals remap))]
     [new-pattern new-match]))
 
-(defn clojure-template
-  [contacts target]
-  (let [new-node
-        (str `(let [contacts ~(str contacts)]))]
+(defn add-data-to-template
+  [template [pattern replacemap]]
+  (cljstring/replace template pattern #(get replacemap %)))
 
-    (replace-contents! (sel1 :#contents) (node [:div new-node]))))
+(defn ns-and-flatten-keys
+  "{ \"foo\" {:bar :baz}
+  \"alpha\" {:beta :gamma}}
+
+  will become
+
+  {\"foo_bar\" :baz
+  \"alpha_beta\" :gamma}"
+  [contacts]
+  (reduce merge
+          (map (fn [[k v]]
+                 (cljset/rename-keys v (reduce merge (map (fn [a-key] {a-key (str k "_" (name a-key))}) (keys v)))))
+               contacts)))
+
+(defn update-lang-div!
+  [contacts target template]
+  (let [contacts-for-template (ns-and-flatten-keys contacts)
+        template-data (contact-re contacts-for-template)
+        lang-template (add-data-to-template template template-data)]
+    (replace-contents! (sel1 :#contents)
+                       (node [:span
+                              [:div {:id "code"} [:pre lang-template]]]))))
+
+; I would macro like below, but I can't (resolve ... ) dynamic symbols in cljs yet... :(
+;(defmacro lang-template [language]
+;  `(defn ~(symbol (str language "-template"))
+;     [contacts# target#]
+;     (update-lang-div! contacts# target# ((symbol (str "raw-" ~language "-template"))))))
+
 
 (defn python-template
-  [contacts target] )
+  [contacts target]
+  (update-lang-div! contacts target (raw-python-template)))
+
 
 (defn html-template
   [contacts target]
-  (let [[pattern replacemap] (contact-re (first contacts))
-        x (clojure.string/replace (raw-html-template) pattern #(get replacemap %))]
-
-    (replace-contents! (sel1 :#contents)
-                       (node [:span
-                              [:div {:id "code"} [:pre x ]]]))))
-
-
+  (update-lang-div! contacts target (raw-html-template)))
 
 (defn js-template
-  [contacts target] )
+  [contacts target]
+  (update-lang-div! contacts target (raw-js-template)))
 
 (defn java-template
-  [contacts target] )
+  [contacts target]
+  (update-lang-div! contacts target (raw-java-template)))
 

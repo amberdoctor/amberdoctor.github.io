@@ -17,9 +17,9 @@
                 {:display "Java"
                  :template java-template}])
 
-(def contacts [{:name "Philip Doctor"
-                :email "philip.s.doctor@gmail.com"
-                :github "https://github.com/philipsdoctor"}
-               {:name "Amber Doctor"
-                :email "amberdoctor@gmail.com"
-                :github "https://github.com/amberdoctor"}])
+(def contacts {"phil" {:name "Philip Doctor"
+                       :email "philip.s.doctor@gmail.com"
+                       :github "https://github.com/philipsdoctor"}
+               "amber" {:name "Amber Doctor"
+                        :email "amberdoctor@gmail.com"
+                        :github "https://github.com/amberdoctor"}})
