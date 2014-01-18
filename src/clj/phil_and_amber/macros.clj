@@ -7,10 +7,16 @@
   (slurp "./resources/langs/python"))
 
 (defmacro raw-js-template []
-  (slurp "./resources/langs/python"))
+  (slurp "./resources/langs/js"))
 
 (defmacro raw-java-template []
-  (slurp "./resources/langs/python"))
+  (slurp "./resources/langs/java"))
+
+(defmacro raw-clojure-template []
+  (slurp "./resources/langs/clojure"))
+
+(defmacro raw-text-template []
+  (slurp "./resources/langs/text"))
 
 (defmacro lang-template [language]
   `(defn ~(symbol (str language "-template"))

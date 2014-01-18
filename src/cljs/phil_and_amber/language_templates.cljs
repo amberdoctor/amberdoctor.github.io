@@ -3,7 +3,13 @@
             [clojure.set :as cljset]
             [clojure.string :as cljstring])
   (:require-macros [dommy.macros :refer [node sel1]]
-                   [phil-and-amber.macros :refer [raw-html-template raw-python-template raw-java-template raw-js-template lang-template]]))
+                   [phil-and-amber.macros :refer [raw-html-template
+                                                  raw-python-template
+                                                  raw-java-template
+                                                  raw-js-template
+                                                  raw-text-template
+                                                  raw-clojure-template
+                                                  lang-template]]))
 
 (defn str-to-id
   "Converts between string and keyword for ID because
@@ -61,7 +67,6 @@
   [contacts target]
   (update-lang-div! contacts target (raw-python-template)))
 
-
 (defn html-template
   [contacts target]
   (update-lang-div! contacts target (raw-html-template)))
@@ -73,4 +78,12 @@
 (defn java-template
   [contacts target]
   (update-lang-div! contacts target (raw-java-template)))
+
+(defn clojure-template
+  [contacts target]
+  (update-lang-div! contacts target (raw-clojure-template)))
+
+(defn text-template
+  [contacts target]
+  (update-lang-div! contacts target (raw-text-template)))
 
