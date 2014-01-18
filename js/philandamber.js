@@ -24667,10 +24667,10 @@ goog.require("dommy.core");
 phil_and_amber.language_templates.str_to_id = function str_to_id(str_var) {
   return cljs.core.keyword.call(null, [cljs.core.str("#"), cljs.core.str(str_var)].join(""))
 };
-phil_and_amber.language_templates.template_pattern = function template_pattern(p__6331) {
-  var vec__6333 = p__6331;
-  var k = cljs.core.nth.call(null, vec__6333, 0, null);
-  var v = cljs.core.nth.call(null, vec__6333, 1, null);
+phil_and_amber.language_templates.template_pattern = function template_pattern(p__3999) {
+  var vec__4001 = p__3999;
+  var k = cljs.core.nth.call(null, vec__4001, 0, null);
+  var v = cljs.core.nth.call(null, vec__4001, 1, null);
   return cljs.core.PersistentArrayMap.fromArray([[cljs.core.str("\\{\\{ "), cljs.core.str(cljs.core.name.call(null, k)), cljs.core.str(" \\}\\}")].join(""), cljs.core.PersistentArrayMap.fromArray([[cljs.core.str("{{ "), cljs.core.str(cljs.core.name.call(null, k)), cljs.core.str(" }}")].join(""), v], true)], true)
 };
 phil_and_amber.language_templates.contact_re = function contact_re(contact) {
@@ -24679,19 +24679,19 @@ phil_and_amber.language_templates.contact_re = function contact_re(contact) {
   var new_match = cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.vals.call(null, remap));
   return cljs.core.PersistentVector.fromArray([new_pattern, new_match], true)
 };
-phil_and_amber.language_templates.add_data_to_template = function add_data_to_template(template, p__6335) {
-  var vec__6337 = p__6335;
-  var pattern = cljs.core.nth.call(null, vec__6337, 0, null);
-  var replacemap = cljs.core.nth.call(null, vec__6337, 1, null);
-  return clojure.string.replace.call(null, template, pattern, function(p1__6334_SHARP_) {
-    return cljs.core.get.call(null, replacemap, p1__6334_SHARP_)
+phil_and_amber.language_templates.add_data_to_template = function add_data_to_template(template, p__4003) {
+  var vec__4005 = p__4003;
+  var pattern = cljs.core.nth.call(null, vec__4005, 0, null);
+  var replacemap = cljs.core.nth.call(null, vec__4005, 1, null);
+  return clojure.string.replace.call(null, template, pattern, function(p1__4002_SHARP_) {
+    return cljs.core.get.call(null, replacemap, p1__4002_SHARP_)
   })
 };
 phil_and_amber.language_templates.ns_and_flatten_keys = function ns_and_flatten_keys(contacts) {
-  return cljs.core.reduce.call(null, cljs.core.merge, cljs.core.map.call(null, function(p__6340) {
-    var vec__6341 = p__6340;
-    var k = cljs.core.nth.call(null, vec__6341, 0, null);
-    var v = cljs.core.nth.call(null, vec__6341, 1, null);
+  return cljs.core.reduce.call(null, cljs.core.merge, cljs.core.map.call(null, function(p__4008) {
+    var vec__4009 = p__4008;
+    var k = cljs.core.nth.call(null, vec__4009, 0, null);
+    var v = cljs.core.nth.call(null, vec__4009, 1, null);
     return clojure.set.rename_keys.call(null, v, cljs.core.reduce.call(null, cljs.core.merge, cljs.core.map.call(null, function(a_key) {
       return cljs.core.PersistentArrayMap.fromArray([a_key, [cljs.core.str(k), cljs.core.str("_"), cljs.core.str(cljs.core.name.call(null, a_key))].join("")], true)
     }, cljs.core.keys.call(null, v))))
@@ -24702,34 +24702,34 @@ phil_and_amber.language_templates.update_lang_div_BANG_ = function update_lang_d
   var template_data = phil_and_amber.language_templates.contact_re.call(null, contacts_for_template);
   var lang_template = phil_and_amber.language_templates.add_data_to_template.call(null, template, template_data);
   return dommy.core.replace_contents_BANG_.call(null, document.getElementById("contents"), function() {
-    var dom6345 = document.createElement("span");
-    dom6345.appendChild(function() {
-      var dom6346 = document.createElement("div");
+    var dom4013 = document.createElement("span");
+    dom4013.appendChild(function() {
+      var dom4014 = document.createElement("div");
       if("code") {
-        dom6346.setAttribute("id", "code")
+        dom4014.setAttribute("id", "code")
       }else {
       }
-      dom6346.appendChild(function() {
-        var dom6347 = document.createElement("pre");
-        dom6347.appendChild(dommy.template.__GT_node_like.call(null, lang_template));
-        return dom6347
+      dom4014.appendChild(function() {
+        var dom4015 = document.createElement("pre");
+        dom4015.appendChild(dommy.template.__GT_node_like.call(null, lang_template));
+        return dom4015
       }());
-      return dom6346
+      return dom4014
     }());
-    return dom6345
+    return dom4013
   }())
 };
 phil_and_amber.language_templates.python_template = function python_template(contacts, target) {
-  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : {{ phil_name }}\n             "email" : {{ phil_email }}\n             "github" : {{ phil_github }}}\n            {"name" : {{ amber_name }}\n             "email" : {{ amber_email }}\n             "github" : {{ amber_github }}}]\n')
+  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : "{{ phil_name }}"\n             "email" : "{{ phil_email }}"\n             "github" : "{{ phil_github }}"}\n            {"name" : "{{ amber_name }}"\n             "email" : "{{ amber_email }}"\n             "github" : "{{ amber_github }}"}]\n')
 };
 phil_and_amber.language_templates.html_template = function html_template(contacts, target) {
   return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, "<div class='contact'>\n  <div id='name'>{{ phil_name }}</div>\n  <div id='email'>{{ phil_email }}</div>\n  <div id='github'>{{ phil_github }}</div>\n</div>\n<div class='contact'>\n  <div id='name'>{{ amber_name }}</div>\n  <div id='email'>{{ amber_email }}</div>\n  <div id='github'>{{ amber_github }}</div>\n</div>")
 };
 phil_and_amber.language_templates.js_template = function js_template(contacts, target) {
-  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : {{ phil_name }}\n             "email" : {{ phil_email }}\n             "github" : {{ phil_github }}}\n            {"name" : {{ amber_name }}\n             "email" : {{ amber_email }}\n             "github" : {{ amber_github }}}]\n')
+  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : "{{ phil_name }}"\n             "email" : "{{ phil_email }}"\n             "github" : "{{ phil_github }}"}\n            {"name" : "{{ amber_name }}"\n             "email" : "{{ amber_email }}"\n             "github" : "{{ amber_github }}"}]\n')
 };
 phil_and_amber.language_templates.java_template = function java_template(contacts, target) {
-  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : {{ phil_name }}\n             "email" : {{ phil_email }}\n             "github" : {{ phil_github }}}\n            {"name" : {{ amber_name }}\n             "email" : {{ amber_email }}\n             "github" : {{ amber_github }}}]\n')
+  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, target, 'def contact():\n    return [{"name" : "{{ phil_name }}"\n             "email" : "{{ phil_email }}"\n             "github" : "{{ phil_github }}"}\n            {"name" : "{{ amber_name }}"\n             "email" : "{{ amber_email }}"\n             "github" : "{{ amber_github }}"}]\n')
 };
 goog.provide("phil_and_amber.data");
 goog.require("cljs.core");
