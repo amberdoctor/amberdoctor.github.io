@@ -16,9 +16,15 @@ public class ContactInformation {
 	public static void main(String[] args)
 	{
 		ContactInformation phil = 
-			new ContactInformation("{{ phil_name }}", "{{ phil_email }}", "{{ phil_github }}", "{{ phil_linkedin }}");
+			new ContactInformation("{{ phil_name }}",
+				"{{ phil_email }}",
+				"{{ phil_github }}",
+				"{{ phil_linkedin }}");
 		ContactInformation amber = 
-			new ContactInformation("{{ amber_name }}", "{{ amber_email }}", "{{ amber_github }}", "{{ amber_linkedin }}");
+			new ContactInformation("{{ amber_name }}",
+				"{{ amber_email }}",
+				"{{ amber_github }}",
+				"{{ amber_linkedin }}");
 		System.out.println(phil);
 		System.out.println(amber);
 	}
