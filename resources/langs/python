@@ -1,0 +1,7 @@
+def contact():
+    return [{"name" : {{ phil_name }}
+             "email" : {{ phil_email }}
+             "github" : {{ phil_github }}}
+            {"name" : {{ amber_name }}
+             "email" : {{ amber_email }}
+             "github" : {{ amber_github }}}]

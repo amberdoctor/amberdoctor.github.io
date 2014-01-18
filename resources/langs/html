@@ -1,0 +1,10 @@
+<div class='contact'>
+  <div id='name'>{{ phil_name }}</div>
+  <div id='email'>{{ phil_email }}</div>
+  <div id='github'>{{ phil_github }}</div>
+</div>
+<div class='contact'>
+  <div id='name'>{{ amber_name }}</div>
+  <div id='email'>{{ amber_email }}</div>
+  <div id='github'>{{ amber_github }}</div>
+</div>
