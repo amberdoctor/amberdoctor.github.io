@@ -1,0 +1,70 @@
+public class ContactInformation {
+
+	private String name;
+	private String email;
+	private String github;
+	private String linkedin;
+	final String website = "{{ website }}";
+	
+	public ContactInformation(String name, String email, String github, String linkedin)
+	{
+		setName(name);
+		setEmail(email);
+		setGithub(github);
+		setLinkedin(linkedin);
+	}
+	
+	public static void main(String[] args)
+	{
+		ContactInformation phil = new ContactInformation("{{ phil_name }}", "{{ phil_email }}", "{{ phil_github }}", "{{ phil_linkedin }}");
+		ContactInformation amber = new ContactInformation("{{ amber_name }}", "{{ amber_email }}", "{{ amber_github }}", "{{ amber_linkedin }}");
+		System.out.println(phil);
+		System.out.println(amber);		
+	}
+
+	public String toString()
+	{
+		return String.format("Name: %s \nEmail: %s \nGithub: %s \nLinkedin: %s ", this.getName(), this.getEmail(), this.getGithub(), this.getLinkedin());
+	}
+	
+	protected void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public String getName()
+	{
+		return this.name;
+	}
+
+	protected void setEmail(String email)
+	{
+		this.email = email;
+	}
+
+	public String getEmail()
+	{
+		return this.email;
+	}
+
+	protected void setGithub(String github)
+	{
+		this.github = github;
+	}
+
+	public String getGithub()
+	{
+		return this.github;
+	}
+
+	protected void setLinkedin(String linkedin)
+	{
+		this.linkedin = linkedin;
+	}
+
+	public String getLinkedin()
+	{
+		return this.linkedin;
+	}
+
+}
