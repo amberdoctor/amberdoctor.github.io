@@ -4,8 +4,7 @@ public class ContactInformation {
 	private String email;
 	private String github;
 	private String linkedin;
-	final String website = "{{ website }}";
-	
+		
 	public ContactInformation(String name, String email, String github, String linkedin)
 	{
 		setName(name);
