@@ -4,7 +4,7 @@ public class ContactInformation {
 	private String email;
 	private String github;
 	private String linkedin;
-		
+
 	public ContactInformation(String name, String email, String github, String linkedin)
 	{
 		setName(name);
@@ -15,15 +15,18 @@ public class ContactInformation {
 	
 	public static void main(String[] args)
 	{
-		ContactInformation phil = new ContactInformation("{{ phil_name }}", "{{ phil_email }}", "{{ phil_github }}", "{{ phil_linkedin }}");
-		ContactInformation amber = new ContactInformation("{{ amber_name }}", "{{ amber_email }}", "{{ amber_github }}", "{{ amber_linkedin }}");
+		ContactInformation phil = 
+			new ContactInformation("{{ phil_name }}", "{{ phil_email }}", "{{ phil_github }}", "{{ phil_linkedin }}");
+		ContactInformation amber = 
+			new ContactInformation("{{ amber_name }}", "{{ amber_email }}", "{{ amber_github }}", "{{ amber_linkedin }}");
 		System.out.println(phil);
-		System.out.println(amber);		
+		System.out.println(amber);
 	}
 
 	public String toString()
 	{
-		return String.format("Name: %s \nEmail: %s \nGithub: %s \nLinkedin: %s ", this.getName(), this.getEmail(), this.getGithub(), this.getLinkedin());
+		return String.format("Name: %s \nEmail: %s \nGithub: %s \nLinkedin: %s ",
+			this.getName(), this.getEmail(), this.getGithub(), this.getLinkedin());
 	}
 	
 	protected void setName(String name)
