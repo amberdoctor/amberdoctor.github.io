@@ -25495,7 +25495,7 @@ phil_and_amber.language_templates.html_template = function html_template(contact
   return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, "\x3ch1\x3eContact Information\x3c/h1\x3e\n\n\x3cspan class\x3d'contact'\x3e\n\t\x3ch2 id\x3d'phil_name'\x3e{{ phil_name }}\x3c/h2\x3e\n\t\x3cdiv id\x3d'phil_email'\x3e{{ phil_email }}\x3c/div\x3e\n\t\x3cdiv id\x3d'phil_github'\x3e{{ phil_github }}\x3c/div\x3e\n\t\x3cdiv id\x3d'phil_linkedin'\x3e{{ phil_linkedin }}\x3c/div\x3e\n\x3c/span\x3e\n\n\x3cspan class\x3d'contact'\x3e\n\t\x3ch2 id\x3d'amber_name'\x3e{{ amber_name }}\x3c/h2\x3e\n\t\x3cdiv id\x3d'amber_email'\x3e{{ amber_email }}\x3c/div\x3e\n\t\x3cdiv id\x3d'amber_github'\x3e{{ amber_github }}\x3c/div\x3e\n\t\x3cdiv id\x3d'amber_linkedin'\x3e{{ amber_linkedin }}\x3c/div\x3e\n\x3c/span\x3e")
 };
 phil_and_amber.language_templates.js_template = function js_template(contacts) {
-  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, "")
+  return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, "function philContactInfo() {\n\tdocument.getElementById('name').innerHTML \x3d '{{ phil_name }}';\n\tdocument.getElementById('email').innerHTML \x3d '{{ phil_email }}';\n\tdocument.getElementById('github').innerHTML \x3d '{{ phil_github }}';\n\tdocument.getElementById('linkedin').innerHTML \x3d '{{ phil_linkedin }}';\n};\n\nfunction amberContactInfo() {\n\tdocument.getElementById('name').innerHTML \x3d '{{ amber_name }}';\n\tdocument.getElementById('email').innerHTML \x3d '{{ amber_email }}';\n\tdocument.getElementById('github').innerHTML \x3d '{{ amber_github }}';\n\tdocument.getElementById('linkedin').innerHTML \x3d '{{ amber_linkedin }}';\n};")
 };
 phil_and_amber.language_templates.java_template = function java_template(contacts) {
   return phil_and_amber.language_templates.update_lang_div_BANG_.call(null, contacts, 'public class ContactInformation {\n\n\tprivate String name;\n\tprivate String email;\n\tprivate String github;\n\tprivate String linkedin;\n\n\tpublic ContactInformation(String name, String email, String github, String linkedin)\n\t{\n\t\tsetName(name);\n\t\tsetEmail(email);\n\t\tsetGithub(github);\n\t\tsetLinkedin(linkedin);\n\t}\n\t\n\tpublic static void main(String[] args)\n\t{\n\t\tContactInformation phil \x3d \n\t\t\tnew ContactInformation("{{ phil_name }}",\n\t\t\t\t"{{ phil_email }}",\n\t\t\t\t"{{ phil_github }}",\n\t\t\t\t"{{ phil_linkedin }}");\n\t\tContactInformation amber \x3d \n\t\t\tnew ContactInformation("{{ amber_name }}",\n\t\t\t\t"{{ amber_email }}",\n\t\t\t\t"{{ amber_github }}",\n\t\t\t\t"{{ amber_linkedin }}");\n\t\tSystem.out.println(phil);\n\t\tSystem.out.println(amber);\n\t}\n\n\tpublic String toString()\n\t{\n\t\treturn String.format("Name: %s \\nEmail: %s \\nGithub: %s \\nLinkedin: %s ",\n\t\t\tthis.getName(), this.getEmail(), this.getGithub(), this.getLinkedin());\n\t}\n\t\n\tprotected void setName(String name)\n\t{\n\t\tthis.name \x3d name;\n\t}\n\n\tpublic String getName()\n\t{\n\t\treturn this.name;\n\t}\n\n\tprotected void setEmail(String email)\n\t{\n\t\tthis.email \x3d email;\n\t}\n\n\tpublic String getEmail()\n\t{\n\t\treturn this.email;\n\t}\n\n\tprotected void setGithub(String github)\n\t{\n\t\tthis.github \x3d github;\n\t}\n\n\tpublic String getGithub()\n\t{\n\t\treturn this.github;\n\t}\n\n\tprotected void setLinkedin(String linkedin)\n\t{\n\t\tthis.linkedin \x3d linkedin;\n\t}\n\n\tpublic String getLinkedin()\n\t{\n\t\treturn this.linkedin;\n\t}\n\n}')
@@ -33134,29 +33134,29 @@ phil_and_amber.page_templates.menu_template = function menu_template(languages, 
     return cljs.core.PersistentVector.fromArray([new cljs.core.Keyword(null, "div.language", "div.language", 765036423), cljs.core.PersistentArrayMap.fromArray([new cljs.core.Keyword(null, "id", "id", 1013907597), display_name], true), display_name], true)
   }, languages)], true)
 };
-var target_content_id_18969 = "contents";
+var target_content_id_14161 = "contents";
 phil_and_amber.page_templates.app_template = function app_template() {
-  var dom18966 = document.createElement("span");
-  dom18966.appendChild(dommy.template.__GT_node_like.call(null, phil_and_amber.page_templates.title_template.call(null)));
-  dom18966.appendChild(dommy.template.__GT_node_like.call(null, phil_and_amber.page_templates.menu_template.call(null, cljs.core.keys.call(null, phil_and_amber.routing.lang_routing), target_content_id_18969)));
-  dom18966.appendChild(function() {
-    var dom18967 = document.createElement("div");
-    if(cljs.core.truth_(target_content_id_18969)) {
-      dom18967.setAttribute("id", target_content_id_18969)
+  var dom14158 = document.createElement("span");
+  dom14158.appendChild(dommy.template.__GT_node_like.call(null, phil_and_amber.page_templates.title_template.call(null)));
+  dom14158.appendChild(dommy.template.__GT_node_like.call(null, phil_and_amber.page_templates.menu_template.call(null, cljs.core.keys.call(null, phil_and_amber.routing.lang_routing), target_content_id_14161)));
+  dom14158.appendChild(function() {
+    var dom14159 = document.createElement("div");
+    if(cljs.core.truth_(target_content_id_14161)) {
+      dom14159.setAttribute("id", target_content_id_14161)
     }else {
     }
-    dom18967.appendChild(document.createTextNode("welcome"));
-    return dom18967
+    dom14159.appendChild(document.createTextNode("welcome"));
+    return dom14159
   }());
-  dom18966.appendChild(function() {
-    var dom18968 = document.createElement("div");
+  dom14158.appendChild(function() {
+    var dom14160 = document.createElement("div");
     if("footer") {
-      dom18968.setAttribute("id", "footer")
+      dom14160.setAttribute("id", "footer")
     }else {
     }
-    return dom18968
+    return dom14160
   }());
-  return dom18966
+  return dom14158
 };
 goog.provide("phil_and_amber.app");
 goog.require("cljs.core");
