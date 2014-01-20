@@ -1,0 +1,13 @@
+function philContactInfo() {
+	document.getElementById('name').innerHTML = '{{ phil_name }}';
+	document.getElementById('email').innerHTML = '{{ phil_email }}';
+	document.getElementById('github').innerHTML = '{{ phil_github }}';
+	document.getElementById('linkedin').innerHTML = '{{ phil_linkedin }}';
+};
+
+function amberContactInfo() {
+	document.getElementById('name').innerHTML = '{{ amber_name }}';
+	document.getElementById('email').innerHTML = '{{ amber_email }}';
+	document.getElementById('github').innerHTML = '{{ amber_github }}';
+	document.getElementById('linkedin').innerHTML = '{{ amber_linkedin }}';
+};
