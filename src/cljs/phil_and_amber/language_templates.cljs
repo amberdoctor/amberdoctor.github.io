@@ -48,7 +48,7 @@
                contacts)))
 
 (defn update-lang-div!
-  [contacts target template]
+  [contacts template]
   (let [contacts-for-template (ns-and-flatten-keys contacts)
         template-data (contact-re contacts-for-template)
         lang-template (add-data-to-template template template-data)]
@@ -64,26 +64,26 @@
 
 
 (defn python-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-python-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-python-template)))
 
 (defn html-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-html-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-html-template)))
 
 (defn js-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-js-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-js-template)))
 
 (defn java-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-java-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-java-template)))
 
 (defn clojure-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-clojure-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-clojure-template)))
 
 (defn text-template
-  [contacts target]
-  (update-lang-div! contacts target (raw-text-template)))
+  [contacts]
+  (update-lang-div! contacts (raw-text-template)))
 
