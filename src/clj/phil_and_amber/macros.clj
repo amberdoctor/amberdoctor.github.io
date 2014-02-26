@@ -1,22 +1,25 @@
-(ns phil-and-amber.macros)
+(ns phil-and-amber.macros
+  (:require [dst.core :refer [generate-template log-error]]))
+
+                                        ;TODO: refactor
 
 (defmacro raw-html-template []
-  (slurp "./resources/langs/html"))
+  `(generate-template {:template ~(slurp "./resources/langs/html") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro raw-python-template []
-  (slurp "./resources/langs/python"))
+  `(generate-template {:template ~(slurp "./resources/langs/python") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro raw-js-template []
-  (slurp "./resources/langs/js"))
+  `(generate-template {:template ~(slurp "./resources/langs/js") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro raw-java-template []
-  (slurp "./resources/langs/java"))
+  `(generate-template {:template ~(slurp "./resources/langs/java") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro raw-clojure-template []
-  (slurp "./resources/langs/clojure"))
+  `(generate-template {:template ~(slurp "./resources/langs/clojure") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro raw-text-template []
-  (slurp "./resources/langs/text"))
+  `(generate-template {:template ~(slurp "./resources/langs/text") :error-handler #(prn (str "Template vars not equal " %1 " vs " %2))}))
 
 (defmacro lang-template [language]
   `(defn ~(symbol (str language "-template"))

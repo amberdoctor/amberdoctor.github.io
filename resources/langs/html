@@ -1,15 +1,15 @@
 <h1>Contact Information</h1>
 
 <span class='contact'>
-	<h2 id='phil_name'>{{ phil_name }}</h2>
-	<div id='phil_email'>{{ phil_email }}</div>
-	<div id='phil_github'>{{ phil_github }}</div>
-	<div id='phil_linkedin'>{{ phil_linkedin }}</div>
+	<h2 id='phil_name'>${phil_name}</h2>
+	<div id='phil_email'>${phil_email}</div>
+	<div id='phil_github'>${phil_github}</div>
+	<div id='phil_linkedin'>${phil_linkedin}</div>
 </span>
 
 <span class='contact'>
-	<h2 id='amber_name'>{{ amber_name }}</h2>
-	<div id='amber_email'>{{ amber_email }}</div>
-	<div id='amber_github'>{{ amber_github }}</div>
-	<div id='amber_linkedin'>{{ amber_linkedin }}</div>
+	<h2 id='amber_name'>${amber_name}</h2>
+	<div id='amber_email'>${amber_email}</div>
+	<div id='amber_github'>${amber_github}</div>
+	<div id='amber_linkedin'>${amber_linkedin}</div>
 </span>

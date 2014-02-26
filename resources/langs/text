@@ -1,9 +1,9 @@
-{{ phil_name }}
-{{ phil_email }}
-{{ phil_github }}
-{{ phil_linkedin }}
+${phil_name}
+${phil_email}
+${phil_github}
+${phil_linkedin}
 
-{{ amber_name }}
-{{ amber_email }}
-{{ amber_github }}
-{{ amber_linkedin }}
+${amber_name}
+${amber_email}
+${amber_github}
+${amber_linkedin}

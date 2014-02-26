@@ -1,7 +1,8 @@
 (ns phil-and-amber.language-templates
   (:require [dommy.core :refer [replace-contents! attr set-html!]]
             [clojure.set :as cljset]
-            [clojure.string :as cljstring])
+            [clojure.string :as cljstring]
+            [clojure.walk :refer [keywordize-keys]])
   (:require-macros [dommy.macros :refer [node sel1]]
                    [phil-and-amber.macros :refer [raw-html-template
                                                   raw-python-template
@@ -10,6 +11,15 @@
                                                   raw-text-template
                                                   raw-clojure-template
                                                   lang-template]]))
+
+; because apparently my version of cljs is out of date....
+(defn enable-console-print!
+  "Set *print-fn* to console.log"
+  []
+  (set! *print-fn*
+    (fn [& args]
+      (.apply js/console.log js/console (into-array args)))))
+(enable-console-print!)
 
 (defn str-to-id
   "Converts between string and keyword for ID because
@@ -49,9 +59,8 @@
 
 (defn update-lang-div!
   [contacts template]
-  (let [contacts-for-template (ns-and-flatten-keys contacts)
-        template-data (contact-re contacts-for-template)
-        lang-template (add-data-to-template template template-data)]
+  (let [contacts-for-template (clojure.walk/keywordize-keys (ns-and-flatten-keys contacts))
+        lang-template (template contacts-for-template)]
     (replace-contents! (sel1 :#contents)
                        (node [:span
                               [:div {:id "code"} [:pre lang-template]]]))))
@@ -86,4 +95,3 @@
 (defn text-template
   [contacts]
   (update-lang-div! contacts (raw-text-template)))
-
